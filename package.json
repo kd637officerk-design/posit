@@ -1,0 +1,37 @@
+{
+  "name": "symphony-6th",
+  "productName": "Symphony 6th",
+  "version": "1.1.1",
+  "description": "Symphony 6th - media player for Windows 11",
+  "main": "main.js",
+  "author": "Bazile",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win --x64 --publish never"
+  },
+  "devDependencies": {
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.bazile.symphony6th",
+    "productName": "Symphony 6th",
+    "files": ["main.js", "app/**/*", "build/icon.png"],
+    "directories": { "output": "dist", "buildResources": "build" },
+    "win": {
+      "target": [{ "target": "nsis", "arch": ["x64"] }, { "target": "portable", "arch": ["x64"] }],
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Symphony 6th",
+      "artifactName": "Symphony-6th-Setup-${version}.${ext}"
+    },
+    "portable": { "artifactName": "Symphony-6th-Portable-${version}.${ext}" }
+  }
+}
